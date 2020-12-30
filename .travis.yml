@@ -1,0 +1,9 @@
+sudo: required
+services:
+   -docker
+
+before_install:
+   -docker build -t phenomenumx/docker-react -f Dockerfile.dev .
+
+script:
+   - docker run -e CI=true phenomenumx/docker-react npm run test
